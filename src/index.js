@@ -13,12 +13,7 @@ import App from './App'
 // console.log(third);
 
 ReactDOM.render(
-  //React.createElement("h1",{style:{color:"blue"}}, "Heyy everyone"), //using javascript to create html elements; 2nd element is a property
-  // <ul>
-  //   <li>Monday</li>
-  //   <li>Tuesday</li>
-  // </ul>
-  <App />,
+  <App login="valeriesutera"/>,
   document.getElementById('root')
 );
 
