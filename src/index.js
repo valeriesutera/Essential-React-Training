@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App'
+import App from './App';
+import {BrowserRouter as Router} from "react-router-dom";
 
 //you can only run one component unless you wrap componenets in divs
 //A way to get around this is to use React.Fragment or just <></>
@@ -13,7 +14,7 @@ import App from './App'
 // console.log(third);
 
 ReactDOM.render(
-  <App login="valeriesutera"/>,
+  <Router><App/></Router>,
   document.getElementById('root')
 );
 

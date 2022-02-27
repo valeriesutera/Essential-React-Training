@@ -1,39 +1,29 @@
 import './App.css';
-import React, {useState, useEffect} from "react";
+import {Routes, Route} from "react-router-dom";
+import React from "react";
+import {
+  Home, About, Events, Contact, Whoops404, Services, CompanyHistory, OurLocation
+} from "./pages"
 
 //https://api.github.com/users/valeriesutera
 
 
 //we create a component by creating a function that returns jsx (this ui element we can add to the DOM)
-function App({login}) {
-  console.log({login})
-  const [data, setData] = useState(null);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+function App() {
 
-  useEffect(()=>{
-    if(!login) return;
-    setLoading(true);
-    fetch(`https://api.github.com/users/${login}`)
-    .then((response) => response.json())
-    .then(setData)
-    .then(() => setLoading(false))
-    .catch(setError)
-  },[login]);
-
-  if(loading) return <h1>Loading...</h1>
-  if(error)
-    return <pre>{JSON.stringify(error, null, 2)}</pre>;
-  if(!data) return null;
-
-  if(data){
-    return<div>
-      <h1>{data.name}</h1>
-      <p>{data.location}</p>
-      <img alt={data.login} src={data.avatar_url}/>
-    </div>
-  }
-  return<div> No User Available</div>
+  return<div>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/about" element={<About />}>
+      <Route path="services" element={<Services />} />
+      <Route path="history" element={<CompanyHistory />} />
+      <Route path="location" element={<OurLocation />} />
+      </Route>
+      <Route path="/events" element={<Events />} />
+      <Route path="/contact" element={<Contact />} />
+      <Route path="/*" element={<Whoops404 />} />
+    </Routes>
+  </div>
 
 }
 
